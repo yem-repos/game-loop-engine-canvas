@@ -6,6 +6,7 @@ export class Entity {
     isHovered = false;
     isDragging = false;
     sceneAPI = null;
+    store = null;
     cursor = 'default';
     destroyed = false;
 

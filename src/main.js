@@ -15,8 +15,8 @@ const game = new Game(
         new Item(400-32, 300-32), 
         
         // Add Spawner with some logic
-        new Spawner(800-64, 0, (mouse, sceneAPI) => {
-            // console.log('click', sceneAPI.add);
+        new Spawner(800-64, 0, (_, sceneAPI) => {
+            console.log('click', sceneAPI.add);
             const { width, height } = sceneAPI.getSize();
             const rndAmount = Math.floor(Math.random() * 15) + 1;
 

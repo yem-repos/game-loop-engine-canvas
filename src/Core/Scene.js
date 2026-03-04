@@ -65,10 +65,11 @@ export class Scene {
         if (typeof entity.contains !== 'function') return;
 
         const mouse = this.#gameAPI.getMouse();
-
-        if (!mouse.hasMoved) return;
+        
+        // if (!mouse.hasMoved) return;
+        if (!mouse.hasMoved && !mouse.justPressed && !mouse.justReleased) return;
         const isHit = entity.contains(mouse.x, mouse.y);
-
+        
         // Enter
         if (isHit === true && entity.isHovered === false && typeof entity.onMouseEnter === 'function') {
             entity.isHovered = true;
