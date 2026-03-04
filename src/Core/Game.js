@@ -24,7 +24,10 @@ export class Game {
     // Game API
     #api = {
         getMouse: () => this.#mouse,
-        getSize: () => ({width: this.#canvas.width, height: this.#canvas.height}),
+        getSize: () => ({
+            width: this.#canvas.width / (window.devicePixelRatio || 1), 
+            height: this.#canvas.height / (window.devicePixelRatio || 1)
+        }),
         setCursor: (cursor) => {
             if (cursor !== this.#cursor) {
                 this.#canvas.style.cursor = cursor;

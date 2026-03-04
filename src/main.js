@@ -18,11 +18,10 @@ const game = new Game(
         new Spawner(800-64, 0, (mouse, sceneAPI) => {
             // console.log('click', sceneAPI.add);
             const { width, height } = sceneAPI.getSize();
-            const dpr = window.devicePixelRatio || 1;
             
             sceneAPI.add(new Item(
-                Math.floor(Math.random() * (width/dpr - 32+1)), 
-                Math.floor(Math.random() * (height/dpr - 32+1)), 
+                Math.floor(Math.random() * (width - 32+1)), 
+                Math.floor(Math.random() * (height - 32+1)), 
             ));
         }),
 
