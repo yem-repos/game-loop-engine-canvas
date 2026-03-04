@@ -12,17 +12,20 @@ const game = new Game(
     new Scene(
         
         // Add Item
-        new Item(64, 64), 
+        new Item(400-32, 300-32), 
         
         // Add Spawner with some logic
         new Spawner(800-64, 0, (mouse, sceneAPI) => {
             // console.log('click', sceneAPI.add);
             const { width, height } = sceneAPI.getSize();
-            
-            sceneAPI.add(new Item(
-                Math.floor(Math.random() * (width - 32+1)), 
-                Math.floor(Math.random() * (height - 32+1)), 
-            ));
+            const rndAmount = Math.floor(Math.random() * 15) + 1;
+
+            for (let i = 0; i < rndAmount; i++) {
+                sceneAPI.add(new Item(
+                    Math.floor(Math.random() * (width - 32)), 
+                    Math.floor(Math.random() * (height - 32)), 
+                ));
+            }
         }),
 
         // Game HUD

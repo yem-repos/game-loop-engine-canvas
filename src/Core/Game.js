@@ -20,13 +20,15 @@ export class Game {
     #cursor = 'default';
     #state = 'menu'; // menu | running | paused | gameover
     #store = null;
+    #dpr = window.devicePixelRatio || 1;
+    #resizeTimeout = null;
 
     // Game API
     #api = {
         getMouse: () => this.#mouse,
         getSize: () => ({
-            width: this.#canvas.width / (window.devicePixelRatio || 1), 
-            height: this.#canvas.height / (window.devicePixelRatio || 1)
+            width: this.#canvas.width / this.#dpr, 
+            height: this.#canvas.height / this.#dpr
         }),
         setCursor: (cursor) => {
             if (cursor !== this.#cursor) {
@@ -107,16 +109,18 @@ export class Game {
 
     // Apply device pixel ratio
     #applyDevicePixelRatio () {
-        const dpr = window.devicePixelRatio || 1;
+        this.#dpr = window.devicePixelRatio || 1;
         const rect = this.#canvas.getBoundingClientRect();
 
-        this.#canvas.width = rect.width * dpr;
-        this.#canvas.height = rect.height * dpr;
+        this.#canvas.width = rect.width * this.#dpr;
+        this.#canvas.height = rect.height * this.#dpr;
 
         this.#canvas.style.width = rect.width + 'px';
         this.#canvas.style.height = rect.height + 'px';
 
-        this.#ctx.scale(dpr, dpr);
+        this.#ctx.scale(this.#dpr, this.#dpr);
+        console.log('Apply device pixel ratio');
+        
     }
 
     // Register events
@@ -160,7 +164,12 @@ export class Game {
 
         // Resize
         window.addEventListener('resize', () => {
-            this.#applyDevicePixelRatio();
+            if (this.#resizeTimeout) return;
+
+            this.#resizeTimeout = setTimeout(() => {
+                this.#applyDevicePixelRatio();
+                this.#resizeTimeout = null;
+            }, 200);
         });
     }
 
