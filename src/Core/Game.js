@@ -119,7 +119,7 @@ export class Game {
         this.#canvas.style.height = rect.height + 'px';
 
         this.#ctx.scale(this.#dpr, this.#dpr);
-        console.log('Apply device pixel ratio');
+        // console.log('Apply device pixel ratio');
         
     }
 
