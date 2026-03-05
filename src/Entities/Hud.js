@@ -9,7 +9,7 @@ export class Hud extends Entity {
         this.height = 32;
     }
 
-    update(delta) {}
+    update(dt) {}
     render(ctx) {
         ctx.save();
         ctx.fillStyle = '#808080';

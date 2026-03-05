@@ -93,7 +93,7 @@ export class Game {
 
         // Check if scene.update() method exists
         if (typeof this.#scene.update !== 'function') {
-            throw new Error('scene must implement update(delta)');
+            throw new Error('scene must implement update(dt)');
         }
 
         // Check if scene.render() method exists
@@ -187,11 +187,12 @@ export class Game {
 
     // Main loop
     #loop (time) {
+    
         const delta = time - this.#lastTime;
         this.#lastTime = time;
 
         // Update phase
-        this.#update(delta);
+        this.#update({time, delta});
 
         // Reset one-time flags
         this.#mouse.justPressed = false;
@@ -208,8 +209,8 @@ export class Game {
     }
 
     // Update phase
-    #update(delta) {
-        this.#scene.update(delta);
+    #update(dt) {
+        this.#scene.update(dt);
     }
 
     // Render phase

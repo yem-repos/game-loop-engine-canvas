@@ -42,7 +42,7 @@ export class Scene {
 
         // Check if entity.update() method exists
         if (typeof entity.update !== 'function') {
-            throw new Error('entity must implement update(delta)');
+            throw new Error('entity must implement update(dt)');
         }
 
         // Check if entity.render() method exists
@@ -112,7 +112,7 @@ export class Scene {
     }
 
     // Engine lifecycle method
-    update (delta) {
+    update (dt) {
         let cursor = 'default';
 
         for (const entity of this.#entities) {
@@ -126,7 +126,7 @@ export class Scene {
             }
 
             // Entity update phase
-            entity.update(delta);
+            entity.update(dt);
         }
 
         // Set cursor

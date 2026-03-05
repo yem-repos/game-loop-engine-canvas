@@ -99,8 +99,8 @@ export class Item extends Entity {
     }
 
     // Engine lifecycle method
-    update (delta) {
-        // console.log('asdasd', delta);
+    update (dt) {
+        // console.log('asdasd', dt);
     }
 
     // Engine lifecycle method

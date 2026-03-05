@@ -39,4 +39,10 @@ export class Entity {
     onMouseDrag(mouse) {}
     onMouseJustReleased(mouse) {}
     onMouseLeave(mouse) {}
+
+    // Update
+    update (dt) {}
+
+    // Render
+    render (ctx) {}
 }

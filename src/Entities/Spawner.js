@@ -15,7 +15,7 @@ export class Spawner extends Entity {
         this.onSpawn(mouse, this.sceneAPI);
     }
 
-    update(delta) {}
+    update(dt) {}
     render(ctx) {
         ctx.fillStyle = this.isHovered ? 'purple' : '#808080';
         ctx.fillRect(this.x, this.y, this.width, this.height);
