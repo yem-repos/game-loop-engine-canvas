@@ -1,6 +1,8 @@
 export class Entity {
     x = 0;
     y = 0;
+    baseX = 0;
+    baseY = 0;
     width = 32;
     height = 32;
     isHovered = false;
@@ -9,6 +11,11 @@ export class Entity {
     store = null;
     cursor = 'default';
     destroyed = false;
+
+    constructor (x, y) {
+        this.baseX = x;
+        this.baseY = y;
+    }
 
     // On Added
     onAdded(sceneAPI) {

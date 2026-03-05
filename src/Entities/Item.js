@@ -13,12 +13,12 @@ export class Item extends Entity {
     #lives = 3;
 
     constructor (x = 0, y = 0) {
-        super();
+        super(x, y);
         this.x = x;
         this.y = y;
         this.#lives = Math.floor(Math.random() * 5) + 1;
         this.#initialLives = this.#lives;
-        console.log(`new Item(${x}, ${y})`);
+        console.log(`new Item(${this.baseX}, ${this.baseY})`);
     }
 
     #damage () {
